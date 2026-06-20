@@ -6,7 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
-def holamundo(request):
-    return render(request,'singup.html', {
-        'form': UserCreationForm
-    })
+# nombre de la funcion
+def home(request):
+    return render(request,'home.html') # nombre del archivo a renderizar
+
+def singup(request):
+    return render(request,'singup.html')

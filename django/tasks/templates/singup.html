@@ -1,5 +1,10 @@
 <h1> Registrate </h1> 
 
-<form>
+<form action="/singup/" method="POST">
+    {%csrf_token%}
     {{form.as_p}}
+
+    <button>
+        Aceptar
+    <button>
 </form>

@@ -20,5 +20,6 @@ from tasks import views
 #path: ruta
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.holamundo)
+    path('', views.home),
+    path('signup/', views.singup)
 ]
