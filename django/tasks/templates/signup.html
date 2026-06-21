@@ -1,0 +1,17 @@
+<h1> Registrate </h1> 
+
+<form action="/signup/" method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <button>
+        Signup
+    <button>
+</form>
+
+<!-- 
+Este es el archivo HTML que la vista le pide s django que renderice y se muestre al usuario
+btw el boton es solo un nombre
+el metodo POST envia la inf de manera oculta, para que no se muestra la contraseña del usuario o lo
+que sea que escriba en la misma url
+-->

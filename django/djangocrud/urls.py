@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from tasks import views
 #path: ruta
+# Estas son las rutas que el navegador pide "localhost:8000/signup/" no son funciones ni archivos solo strings
+# para decidir que VISTA (views) ejecutar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
-    path('signup/', views.singup)
+    path('signup/', views.signup_view)
 ]

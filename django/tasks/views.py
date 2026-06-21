@@ -5,10 +5,18 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 
 
-# Create your views here.
-# nombre de la funcion
-def home(request):
-    return render(request,'home.html') # nombre del archivo a renderizar
+# Request es un objeto de djangousado cada vez que alguien hace una peticion HTTP al servidor 
+#(entra una url y sale un html). Contiene informacion de la peticion. Quien la hizo, metodo de uso, que datos
+#
 
-def singup(request):
-    return render(request,'singup.html')
+# Create your views here.
+# VISTAS (views) de la app task.
+# Funciones de python (logica). Es lo que python ejecuta cuando se visita una url
+#En este caso renderizar un HTML
+
+def home(request): # Lo que entra, una peticion
+    return render(request,'home.html') # nombre del archivo a renderizar (lo que sale)
+    # la funcion reder recive la consulta y el nombre del HTML a renderizar
+
+def signup_view(request):
+    return render(request,'signup.html')
