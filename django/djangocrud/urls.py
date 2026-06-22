@@ -22,6 +22,6 @@ from tasks import views
 # para decidir que VISTA (views) ejecutar
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('signup/', views.signup_view)
+    path('', views.home,name='home'),
+    path('signup/', views.signup_view,name='signup') # nombre de rutas
 ]
