@@ -19,4 +19,6 @@ def home(request): # Lo que entra, una peticion
     # la funcion reder recive la consulta y el nombre del HTML a renderizar
 
 def signup_view(request):
-    return render(request,'signup.html')
+    return render(request,'signup.html',{
+        'form': UserCreationForm()
+    })
