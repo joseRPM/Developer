@@ -19,6 +19,8 @@ def home(request): # Lo que entra, una peticion
     return render(request,'home.html') # nombre del archivo a renderizar (lo que sale)
     # la funcion reder recive la consulta y el nombre del HTML a renderizar
 
+
+# Vista para crear usuarios (funcionando)
 def signup_view(request):
 
     if request.method == 'GET':
@@ -33,5 +35,12 @@ def signup_view(request):
                 user.save()
                 return HttpResponse('Usuario creado exitosamente')
             except:
-                return HttpResponse('El usuario ya existe')
-        return HttpResponse('Las contraseñas no coinciden')
+                return render(request,'signup.html',{
+                'form': UserCreationForm,
+                'error': 'El usuario ya existe, intente denuevo'
+                })
+            
+        return render(request,'signup.html',{
+            'form': UserCreationForm,
+            'error': 'La contraseña no coincide'
+        })
