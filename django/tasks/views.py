@@ -1,7 +1,7 @@
 #views es la logica, lo que se manda al usuario
 # los emplates son la estructura, rabaja con datos dinamicos
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User 
 from django.http import HttpResponse
@@ -33,7 +33,7 @@ def signup_view(request):
                 user = User.objects.create_user(username=request.POST['username'],
                 password=request.POST['password1'])
                 user.save()
-                return HttpResponse('Usuario creado exitosamente')
+                return redirect('task.url')         #usuario creado exitosamente y redirecciona
             except:
                 return render(request,'signup.html',{
                 'form': UserCreationForm,
@@ -44,3 +44,6 @@ def signup_view(request):
             'form': UserCreationForm,
             'error': 'La contraseña no coincide'
         })
+    
+def task_view(request):
+    return render(request,'task.html')
