@@ -7,7 +7,7 @@
 from django.shortcuts import render, redirect 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User 
-from django.contrib.auth import login 
+from django.contrib.auth import login, logout   
 from django.db import IntegrityError
 
 
@@ -46,3 +46,8 @@ def signup_view(request):
     
 def task_view(request):
     return render(request,'task.html')
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('home')
+

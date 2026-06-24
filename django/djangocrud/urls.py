@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home,name='home'),
     path('signup/', views.signup_view,name='signup'), # nombre de rutas
-    path('task/', views.task_view,name='task.url') # nombre de rutas
+    path('task/', views.task_view,name='task.url'), # nombre de rutas
+    path('logout/', views.cerrar_sesion,name='logout') # nombre de rutas
 ]
