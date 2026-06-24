@@ -4,12 +4,14 @@
   <h1> Singin (iniciar sesion) </h1>
 
   {{error}}
-  <form action="/signin/" method="post">
+
+  <form action="/signin/" method="POST">
     {% csrf_token %}   
     {{form.as_p}}
-  </form>
+
     <button>
         Ingresar
     </button>
+  </form>
     {% endblock %}
  

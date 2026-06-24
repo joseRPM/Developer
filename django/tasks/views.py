@@ -55,15 +55,15 @@ def cerrar_sesion(request):
 def signin(request ):           # Ingresar con cuenta ya creada
     if request.method == 'GET':
         return render(request,'signin.html',{
-            'form': AuthenticationForm
+            'form': AuthenticationForm()
         })
     else: #verimicamos su existencia en la base de datos
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request,'singnin.html',{
+            return render(request,'signin.html',{
             'form': AuthenticationForm,
             'error': 'usuario o constraseña incorrectas'
-        })
+            })
         else:
             login(request,user )
             return redirect('task.url')  #Le puse este nombre (.url) para comprobar que se llama
