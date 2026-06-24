@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
   {% block content %}
-  <h1> Singin (ingreso con cuenta existente) </h1>
+  <h1> Singin (iniciar sesion) </h1>
 
+  {{error}}
   <form action="/signin/" method="post">
     {% csrf_token %}   
     {{form.as_p}}

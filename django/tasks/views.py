@@ -7,7 +7,7 @@
 from django.shortcuts import render, redirect 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User 
-from django.contrib.auth import login, logout   
+from django.contrib.auth import login, logout, authenticate  
 from django.db import IntegrityError
 
 
@@ -50,8 +50,22 @@ def task_view(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('home')
-
+    #Los redirect reciben los nombres de las url no de los templates
+    
 def signin(request ):           # Ingresar con cuenta ya creada
-    return render(request,'signin.html',{
-            'form': AuthenticationForm()    #form= formulario
-    })
+    if request.method == 'GET':
+        return render(request,'signin.html',{
+            'form': AuthenticationForm
+        })
+    else: #verimicamos su existencia en la base de datos
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request,'singnin.html',{
+            'form': AuthenticationForm,
+            'error': 'usuario o constraseña incorrectas'
+        })
+        else:
+            login(request,user )
+            return redirect('task.url')  #Le puse este nombre (.url) para comprobar que se llama
+                                         # a la url y no al html perse 
+        
