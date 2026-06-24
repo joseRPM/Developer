@@ -18,11 +18,14 @@
 
             {% if user.is_authenticated %}
              <li>
-                <a href="/logout">logout</a>
+                <a href="/logout">Cerrar sesion</a>
             </li>
             {% else %}
              <li>
-                <a href="/signup">signup</a>
+                <a href="/signup">Registrarse</a>
+            </li>
+             <li>
+                <a href="/signin">Ingresar</a>  <!--Ingreso por cuenta ya existente -->
             </li>
             {% endif %}
         </ul>

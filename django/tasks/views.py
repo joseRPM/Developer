@@ -5,7 +5,7 @@
 #En este caso renderizar un HTML
 
 from django.shortcuts import render, redirect 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User 
 from django.contrib.auth import login, logout   
 from django.db import IntegrityError
@@ -51,3 +51,7 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('home')
 
+def signin(request ):           # Ingresar con cuenta ya creada
+    return render(request,'signin.html',{
+            'form': AuthenticationForm()    #form= formulario
+    })
