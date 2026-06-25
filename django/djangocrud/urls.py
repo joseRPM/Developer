@@ -21,10 +21,10 @@ from tasks import views
 # Estas son las rutas que el navegador pide "localhost:8000/signup/" no son funciones ni archivos solo strings
 # para decidir que VISTA (views) ejecutar
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),                   #panel de administrador
     path('', views.home,name='home'),
-    path('signup/', views.signup_view,name='signup'), # nombre de rutas
-    path('task/', views.task_view,name='task.url'), # nombre de rutas
+    path('signup/', views.signup_view,name='signup'),  #nombre de rutas
+    path('task/', views.task_view,name='task.url'),    #nombre de rutas
     path('logout/', views.cerrar_sesion,name='logout'),
-    path('signin/', views.signin,name='signin') # nombre de rutas
+    path('signin/', views.signin,name='signin')        #nombre de rutas
 ]
