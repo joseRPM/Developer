@@ -81,8 +81,10 @@ def create_task(request):
     #el boton envia una peticion tipo POST
     else: 
         #veo en consola el flujo de los datos
-        print(request.POST) 
-        #reenvia a la vista 
-        return render(request, 'create_task.html',{
-        'form': taskform()
-        })
+        #print(request.POST)
+        form= taskform(request.POST)
+        new_task= form.save(commit= False)
+        new_task.user= request.user  #Necesitas el usuario de la tarea 
+        print(new_task)
+        new_task.save()
+        return redirect('task.url')
