@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User 
 from django.contrib.auth import login, logout, authenticate  
 from django.db import IntegrityError
+from .forms import taskform
 
 
 
@@ -68,4 +69,9 @@ def signin(request ):           # Ingresar con cuenta ya creada
             login(request,user )
             return redirect('task.url')  #Le puse este nombre (.url) para comprobar que se llama
                                          # a la url y no al html perse 
-        
+
+
+def create_task(request):
+    return render(request, 'create_task.html',{
+        'form': taskform
+    })
