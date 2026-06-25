@@ -3,10 +3,13 @@
 {% block content %}
     <h1>crear tarea</h1>
 
-    <form action="/task/create" method="POST">
-
-        {{form}}
-
+    <form action="/task/create/" method="POST">
+        {% csrf_token %}
+        
+        {{form.as_p}}
+        <button>
+            Guardar
+        </button>
     </form>
 
 {% endblock %}

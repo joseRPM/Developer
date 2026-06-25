@@ -71,7 +71,18 @@ def signin(request ):           # Ingresar con cuenta ya creada
                                          # a la url y no al html perse 
 
 
+
+# GET peticion que hace el navegador cuando yo lo visito
 def create_task(request):
-    return render(request, 'create_task.html',{
-        'form': taskform
+    if request.method == "GET":
+       return render(request, 'create_task.html',{
+        'form': taskform()
     })
+    #el boton envia una peticion tipo POST
+    else: 
+        #veo en consola el flujo de los datos
+        print(request.POST) 
+        #reenvia a la vista 
+        return render(request, 'create_task.html',{
+        'form': taskform()
+        })

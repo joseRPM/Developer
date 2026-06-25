@@ -3,6 +3,6 @@ from .models import Task
 
   
 class  taskform(ModelForm):
-    class meta:
+    class Meta:
         model = Task
         fields= ['title','description','important']
