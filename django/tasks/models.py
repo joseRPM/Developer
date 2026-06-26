@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User #tabla user
+
+#tengo problemas con la version de django, metemos mano
+from django.utils import timezone
+
 # Create your models here.
 #tabla sql generada por python
 class Task(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)      
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=timezone.now)
     datecompleted = models.DateTimeField(null=True,blank=True)
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)  
