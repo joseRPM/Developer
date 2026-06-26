@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate  
 from django.db import IntegrityError
 from .forms import taskform
+from .models import Task
 
 
 
@@ -46,7 +47,9 @@ def signup_view(request):
         })
     
 def task_view(request):
-    return render(request,'task.html')
+    tasks= Task.objects.all()
+
+    return render(request,'task.html', {'tasks': tasks})
 
 def cerrar_sesion(request):
     logout(request)
