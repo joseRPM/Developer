@@ -82,9 +82,15 @@ def create_task(request):
     else: 
         #veo en consola el flujo de los datos
         #print(request.POST)
-        form= taskform(request.POST)
-        new_task= form.save(commit= False)
-        new_task.user= request.user  #Necesitas el usuario de la tarea 
-        print(new_task)
-        new_task.save()
-        return redirect('task.url')
+        try:
+            form= taskform(request.POST)
+            new_task= form.save(commit= False)
+            new_task.user= request.user  #Necesitas el usuario de la tarea 
+            print(new_task)
+            new_task.save()
+            return redirect('task.url')
+        #cuando ocurr un error
+        except ValueError:
+           return render(request, 'create_task.html',{
+           'form': taskform(),
+           'error': 'Por favor ingrese un valor valido'})
