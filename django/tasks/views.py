@@ -52,7 +52,7 @@ def task_view(request):
         return render(request,'task.html', {'tasks': tasks})
     except:
         return render(request, 'home.html',{
-           'error': 'Por favor ingrese a un usuario o cree uno'})
+           'error': 'Por favor ingrese a su usuario o cree uno'})
 
 
 
