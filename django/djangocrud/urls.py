@@ -27,5 +27,6 @@ urlpatterns = [
     path('task/', views.task_view,name='task.url'),    #nombre de rutas
     path('logout/', views.cerrar_sesion,name='logout'),
     path('signin/', views.signin,name='signin'),
-    path('task/create/', views.create_task,name='task')        #nombre de rutas
-]
+    path('task/create/', views.create_task,name='task'),       #nombre de rutas
+    path('task/<int:task_id>/', views.task_detail,name='task_detail')
+    ]
