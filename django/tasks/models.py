@@ -10,7 +10,7 @@ class Task(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)      
     created = models.DateTimeField(auto_now_add=timezone.now)
-    datecompleted = models.DateTimeField(null=True,blank=True)
+    datecompleted = models.DateTimeField(null=True,blank=True) #condicional solo para el admin
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)  
     #modo cascada (eliminamos el usuario, se eliminan las tareas)
