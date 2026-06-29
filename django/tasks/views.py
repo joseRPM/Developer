@@ -47,9 +47,15 @@ def signup_view(request):
         })
     
 def task_view(request):
-    tasks= Task.objects.all()
+    try:
+        tasks= Task.objects.filter(user=request.user)
+        return render(request,'task.html', {'tasks': tasks})
+    except:
+        return render(request, 'home.html',{
+           'error': 'Por favor ingrese a un usuario o cree uno'})
 
-    return render(request,'task.html', {'tasks': tasks})
+
+
 
 def cerrar_sesion(request):
     logout(request)
