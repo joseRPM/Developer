@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Detalles de la tarea</h1>
-<p>{{task.title}}</p>
+    <h1>{{task.title}}</h1>
+     {{error}}
+    <!--form action="". Si no colocamos action lo mandara a a la misma ruta de donde nace la info-->
+    <form method="POST">
+       {% csrf_token %}
+       {{form.as_p}} 
+       <button>
+         Actualizar
+       </button>
+    </form>
+    
+
 {% endblock %}
  

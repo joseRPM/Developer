@@ -104,7 +104,19 @@ def create_task(request):
            'form': taskform(),
            'error': 'Por favor ingrese un valor valido'})
 
-
+# aqui estoy
 def task_detail(request,task_id):
-    task= get_object_or_404(Task, pk=task_id) #mandamos un error sin que se caiga el servidor por completo
-    return render(request,'task_detail.html',{'task':task})
+    if request.method == 'GET':
+
+        task= get_object_or_404(Task, pk=task_id,user=request.user) #Solo los usuarios pueden modificar sus propias tareas
+        form= taskform(instance=task)
+        return render(request,'task_detail.html',{'task':task, 'form':form})
+    else:
+        try:
+            task= get_object_or_404(Task, pk=task_id, user=request.user)
+            form= taskform(request.POST,instance=task)
+            form.save()
+            return redirect('task.url')
+        except ValueError:
+            return render(request,'task_detail.html',{'task':task, 'form':form, 
+            'error': "Error al actualizar la tarea"})
