@@ -1,12 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {{error}}
 
+<main class="container py-5">
+  <section class="card card-body">
+    <h1 class="display-1 text-center">Django Crud</h1>
 
-  {% block content %}
-  {{error}}
-  <h1> HOME </h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quas
+      delectus beatae aliquid explicabo saepe in facere eligendi esse libero
+      dolor sequi corrupti earum id dolorum nesciunt, laudantium incidunt
+      voluptate iste sunt iusto maxime rem. Alias totam ut voluptates doloremque
+      laboriosam, in, quae, debitis nisi assumenda sapiente sequi eius ullam
+      animi! Quos, accusamus labore. Eveniet odit sint nemo consectetur
+      reiciendis! Suscipit eius quis, laboriosam velit iste sint qui a molestiae
+      maxime sed, modi doloremque expedita corporis placeat odio temporibus,
+      inventore deserunt repellendus officia aperiam voluptate rem facere
+      fugiat. Inventore quasi quam esse eius obcaecati ad neque. Molestiae
+      exercitationem doloribus tempora.
+    </p>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-     Ipsam praesentium laborum maiores vitae. Quis veritatis, 
-     laudantium alias ad doloribus fugiat.<p> 
-    {% endblock %}
- 
+    <div class="text-center">
+      <a href="/signin/" class="btn btn-primary">
+        Iniciar sesion
+      </a>
+      <a href="/sigout/" class="btn btn-primary">
+        Cerrar sesion
+      </a>
+    </div>
+  
+  </section>
+</main>
+{% endblock %}
