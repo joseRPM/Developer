@@ -28,5 +28,7 @@ urlpatterns = [
     path('logout/', views.cerrar_sesion,name='logout'),
     path('signin/', views.signin,name='signin'),
     path('task/create/', views.create_task,name='task'),       #nombre de rutas
-    path('task/<int:task_id>/', views.task_detail,name='task_detail')
+    path('task/<int:task_id>/', views.task_detail,name='task_detail'),
+    path('task/<int:task_id>/complete/', views.complete_task,name='complete_task'), # name='complete_task' para que coincida con la url  
+    path('task/<int:task_id>/delete/', views.delete_task,name='delete_task')
     ]
