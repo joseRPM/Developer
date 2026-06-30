@@ -116,3 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+#si alguien intenta ingresar a rutas protegidas se le deriva a la ruta de ingresar sesion
+LOGIN_URL = 'signin'

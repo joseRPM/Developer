@@ -12,6 +12,7 @@ from django.db import IntegrityError
 from .forms import taskform
 from .models import Task
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required #Protejer funciones
 
 
 
@@ -48,6 +49,7 @@ def signup_view(request):
         })
     
 #task
+@login_required
 def task_view(request):
     try:
         tasks= Task.objects.filter(user=request.user, datecompleted__isnull= True)
@@ -56,6 +58,7 @@ def task_view(request):
         return render(request, 'home.html',{
            'error': 'Por favor ingrese a su usuario o cree uno'})
 
+@login_required
 def task_view_completed(request):
     try:
         tasks= Task.objects.filter(user=request.user, datecompleted__isnull= False).order_by('-datecompleted')
@@ -64,7 +67,7 @@ def task_view_completed(request):
         return render(request, 'home.html',{
            'error': 'Por favor ingrese a su usuario o cree uno'})
 
-
+@login_required
 def cerrar_sesion(request):
     logout(request)
     return redirect('home')
@@ -90,6 +93,7 @@ def signin(request ):           # Ingresar con cuenta ya creada
 
 
 # GET peticion que hace el navegador cuando yo lo visito
+@login_required
 def create_task(request):
     if request.method == "GET":
        return render(request, 'create_task.html',{
@@ -112,7 +116,8 @@ def create_task(request):
            'form': taskform(),
            'error': 'Por favor ingrese un valor valido'})
 
-# Detaales de la tarea
+# Detalles de la tarea
+@login_required
 def task_detail(request,task_id):
     if request.method == 'GET':
 
@@ -129,6 +134,7 @@ def task_detail(request,task_id):
             return render(request,'task_detail.html',{'task':task, 'form':form, 
             'error': "Error al actualizar la tarea"})
 
+@login_required
 def complete_task(request,task_id):
     task=get_object_or_404(Task,pk=task_id, user=request.user)
     if request.method == 'POST':
@@ -136,6 +142,7 @@ def complete_task(request,task_id):
         task.save()
         return redirect('task.url')
     
+@login_required   
 def delete_task(request,task_id):
     task=get_object_or_404(Task,pk=task_id, user=request.user)
     if request.method == 'POST':
