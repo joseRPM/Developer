@@ -46,7 +46,8 @@ def signup_view(request):
             'form': UserCreationForm,
             'error': 'La contraseña no coincide'
         })
-     
+    
+#task
 def task_view(request):
     try:
         tasks= Task.objects.filter(user=request.user, datecompleted__isnull= True)
@@ -55,7 +56,13 @@ def task_view(request):
         return render(request, 'home.html',{
            'error': 'Por favor ingrese a su usuario o cree uno'})
 
-
+def task_view_completed(request):
+    try:
+        tasks= Task.objects.filter(user=request.user, datecompleted__isnull= False).order_by('-datecompleted')
+        return render(request,'task.html', {'tasks': tasks})
+    except:
+        return render(request, 'home.html',{
+           'error': 'Por favor ingrese a su usuario o cree uno'})
 
 
 def cerrar_sesion(request):
@@ -134,3 +141,5 @@ def delete_task(request,task_id):
     if request.method == 'POST':
         task.delete()
         return redirect('task.url')
+    
+

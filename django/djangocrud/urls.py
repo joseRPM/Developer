@@ -23,12 +23,13 @@ from tasks import views
 urlpatterns = [
     path('admin/', admin.site.urls),                   #panel de administrador
     path('', views.home,name='home'),
-    path('signup/', views.signup_view,name='signup'),  #nombre de rutas
-    path('task/', views.task_view,name='task.url'),    #nombre de rutas
-    path('logout/', views.cerrar_sesion,name='logout'),
-    path('signin/', views.signin,name='signin'),
-    path('task/create/', views.create_task,name='task'),       #nombre de rutas
-    path('task/<int:task_id>/', views.task_detail,name='task_detail'),
-    path('task/<int:task_id>/complete/', views.complete_task,name='complete_task'), # name='complete_task' para que coincida con la url  
-    path('task/<int:task_id>/delete/', views.delete_task,name='delete_task')
+    path('signup/', views.signup_view,name='signup'),                               #Registro
+    path('task/', views.task_view,name='task.url'),                                 #Tareas
+    path('task_completed/', views.task_view_completed,name='task_completed'),       #Mostrar tareas completas
+    path('logout/', views.cerrar_sesion,name='logout'),                             #Cerrar sesion
+    path('signin/', views.signin,name='signin'),                                    #Ingresar sesion
+    path('task/create/', views.create_task,name='task'),                            #Crear tareas
+    path('task/<int:task_id>/', views.task_detail,name='task_detail'),              #Detalles de la tarea
+    path('task/<int:task_id>/complete/', views.complete_task,name='complete_task'), #Marcar una tarea 
+    path('task/<int:task_id>/delete/', views.delete_task,name='delete_task')        #Eliminar tarea
     ]

@@ -16,9 +16,11 @@
 
             {% if user.is_authenticated %}
             <li>
-                <a href="/task">Tareas</a>
+                <a href="{% url 'task.url' %}">Tareas pendientes</a>
             </li> 
-
+             <li>
+                <a href="{% url 'task_completed' %}">Tareas completadas</a>
+            </li> 
             <li>
                 <a href="/task/create">Crear tarea</a>
             </li> 
