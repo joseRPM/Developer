@@ -1,18 +1,38 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1> Registrate </h1> 
 
-{{error}}
 
-<form action="/signup/" method="POST">
-    {%csrf_token%}
-    {{form.as_p}}
+<main class="container">
+    <div class="row"> 
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form action="/signup/" method="POST" class="card card-body">
+                <h1 class="text-center"> Registrate </h1> 
+                 {{error}}
+                 {%csrf_token%}
+                 <div class="mb-3">
+                    <label for="usuario">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder=" Ingresa tu nombre de usuario">
+                 </div>
+                 
+                 <div class="mb-3">
+                    <label for="password1">Password:</label>
+                    <input type="password" name="password1" id="password1" class="form-control" placeholder=" Ingresa tu contraseña">
+                 </div>
 
-    <button>
-     Signup
-    <button>
-</form>
+                 <div class="mb-3">
+                    <label for="password2">Confirm your password:</label>
+                    <input type="password" name="password2" id="password2" class="form-control" placeholder=" Confirma tu contraseña">
+                 </div>
+
+                 <button class="btn btn-primary">
+                    Confirmar
+                 </button>
+            </form>
+        </div>
+
+    </div>
+</main>
+
 {% endblock %}
 
 
@@ -22,4 +42,16 @@ Este es el archivo HTML que la vista le pide s django que renderice y se muestre
 btw el boton es solo un nombre
 el metodo POST envia la inf de manera oculta, para que no se muestra la contraseña del usuario o lo
 que sea que escriba en la misma url
+-->
+
+<!-- 
+  <form action="/signup/" method="POST" class="card card-body text-center">
+                <h1> Registrate </h1> 
+                 {{error}}
+                 {%csrf_token%}
+                 {{form}}
+                    <button>
+                     Confirmar
+                    <button>
+            </form>
 -->
