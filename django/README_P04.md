@@ -21,6 +21,8 @@ modelado de datos, vistas, autenticación y despliegue.
 - Autenticación de usuarios (registro, login, logout)
 - Protección de rutas según estado de sesión
 - Interfaz web con templates Django
+- ## Demo
+[Ver aplicación en vivo](https://django-auth-crud-hp0v.onrender.com)
 
 ---
 
